@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <link rel="stylesheet" th:href="@{/css/users.css}">
+    <script th:src="@{/js/main.js}" defer th:type="module"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<form class="needs-validation create-user-form" method="post" action="/users/new">
+    <div class="form-row create-user">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01">First name</label>
+            <input type="text" name="name" class="form-control" id="validationCustom01" placeholder="Mark"
+                   required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Last name</label>
+            <input type="text" name="lastName" class="form-control" id="validationCustom02" placeholder="Otto"
+                   required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Photo</label>
+            <input type="text" name="photo" class="form-control" id="validationCustom03" placeholder="buzova.jpg"
+                   required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary add-button" type="submit">Add</button>
+</form>
+<button type="button" class="btn btn-primary btn-lg add-user">Add User</button>
+<section class="users-list">
+    <p class="user-item" th:each="user : ${users}" th:attr="data-user-id=${user.getId()}">
+        <span data-user='name' class="user-data" th:text="${user.getName()}"></span>
+        <span data-user='lastName' class="user-data" th:text="${user.getLastName()}"></span>
+        <span class="user-photo">
+            <img th:src="@{'/images/' + ${user.getPhoto()}}" th:alt="${user.getLastName()}" width="100"
+                 th:data-source="${user.getPhoto()}"/>
+        </span>
+        <button type="button" class="btn btn-success edit-user">Edit</button>
+        <button type="button" class="btn btn-warning delete">Remove</button>
+    </p>
+</section>
+</body>
+</html>

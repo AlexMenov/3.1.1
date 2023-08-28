@@ -1,0 +1,110 @@
+body, .user-list, .user-item, .user-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    min-height: 100vh;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.user-list {
+    flex-direction: column;
+}
+
+.user-item {
+    margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-gap: 10px;
+    border: 2px mediumslateblue solid;
+    border-radius: 5px;
+    padding: 15px;
+    min-height: 150px;
+}
+
+.user-data {
+    overflow: hidden;
+    word-break: break-all;
+}
+
+button {
+    width: 80px;
+    height: 40px;
+    background: darkseagreen;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform .1s ease-in-out;
+    margin-left: 20px;
+    font-weight: inherit;
+    letter-spacing: inherit;
+}
+
+.user-photo {
+    position: relative;
+}
+
+.user-photo img {
+    max-height: 100px;
+}
+
+.delete-user:before, .delete-user:after {
+    content: "";
+    width: 4px;
+    height: 80%;
+    border-radius: 5px;
+    background: red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(55deg);
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+    z-index: 10;
+}
+
+.delete-user:after {
+    top: 20%;
+    transform: rotate(140deg);
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.editable {
+    border: 1px black solid;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.create-user-form {
+    position: absolute;
+    width: 500px;
+    border: 3px darkslateblue solid;
+    border-radius: 10px;
+    left: 5%;
+    top: 30%;
+    transform: translate(-150%, -50%);
+    padding: 10px;
+    transition: transform .5s ease-in-out;
+}
+
+.create-user {
+
+}
+.add-user {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    width: 150px;
+    font-size: 18px;
+    padding: 3px 0 15px 0 !important;
+    transition: transform 5s ease-in-out;
+}
+
