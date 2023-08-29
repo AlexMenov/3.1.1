@@ -38,4 +38,7 @@ public class User implements Serializable {
 
     @Column(name = "user_photo")
     private String photo;
+
+    @Column(name = "achievement")
+    private String achievement;
 }

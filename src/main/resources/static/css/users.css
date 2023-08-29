@@ -1,4 +1,4 @@
-body, .user-list, .user-item, .user-data {
+body, .user-list, .user-item, .user-data, .card.center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,6 @@ body {
     min-height: 100vh;
     font-size: 15px;
     font-weight: 600;
-    letter-spacing: 1px;
 }
 
 .user-list {
@@ -18,7 +17,7 @@ body {
 .user-item {
     margin-bottom: 15px;
     display: grid;
-    grid-template-columns: repeat(5, 100px);
+    grid-template-columns: repeat(2, 100px) 150px repeat(3, 80px);
     grid-gap: 10px;
     border: 2px mediumslateblue solid;
     border-radius: 5px;
@@ -47,6 +46,7 @@ button {
 
 .user-photo {
     position: relative;
+    text-align: center;
 }
 
 .user-photo img {
@@ -107,4 +107,10 @@ button:hover {
     padding: 3px 0 15px 0 !important;
     transition: transform 5s ease-in-out;
 }
+
+.info-user a {
+    text-decoration: none;
+    color: inherit;
+}
+
 

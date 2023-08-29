@@ -5,7 +5,10 @@ import com.userscrud.userscrud.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/users")
@@ -29,8 +32,13 @@ public class UserController {
 
     @PostMapping("/new")
     public String createUser(@ModelAttribute User user) {
-        System.out.println(user);
         userRepo.save(user);
         return "redirect:/users";
+    }
+    @GetMapping("/{userId}")
+    public String getUserById (@PathVariable(name = "userId") String id, Model model) {
+        Optional<User> user = userRepo.findById(Long.valueOf(id));
+        model.addAttribute("user", user);
+        return "user";
     }
 }

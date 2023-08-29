@@ -49,6 +49,7 @@
                  th:data-source="${user.getPhoto()}"/>
         </span>
         <button type="button" class="btn btn-success edit-user">Edit</button>
+        <a th:href="${'/users/' + user.getId()}"><button type="button" class="btn btn-danger info-user">Info</button></a>
         <button type="button" class="btn btn-warning delete">Remove</button>
     </p>
 </section>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link rel="stylesheet" th:href="@{/css/users.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div th:if="${user.isPresent()}" class="card center" style="width: 18rem;">
+    <img class="card-img-top" th:src="@{'/images/' + ${user.get().getPhoto()}}" alt="Card image cap">
+    <div class="card-body">
+        <h3 class="card-title" th:text="${user.get().getName() + ' ' + user.get().getLastName()}"></h3>
+        <p class="card-text">Достижения:
+            <br/><span th:text="${user.get().getAchievement()}"></span>
+        </p>
+    </div>
+    <div class="card-body">
+        <a href="/users" class="card-link">Back</a>
+    </div>
+</div>
+<div th:unless="${user.isPresent()}" class="card" style="width: 18rem;">
+    <div class="card-body">
+        Such User Not Found
+    </div>
+</div>
+</body>
+</html>
