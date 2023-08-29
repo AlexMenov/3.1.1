@@ -1,28 +1,25 @@
 package com.userscrud.userscrud.controller;
 
-import com.userscrud.userscrud.dao.UserRepository;
 import com.userscrud.userscrud.model.User;
+import com.userscrud.userscrud.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    private final UserRepository userRepo;
+    private final UserService userService;
 
     @Autowired
-    public UserController(@Qualifier("userRepo") UserRepository userRepo) {
-        this.userRepo = userRepo;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @ModelAttribute("users")
     public Iterable<User> users() {
-        return userRepo.findAll();
+        return userService.getUsers();
     }
 
     @GetMapping
@@ -31,14 +28,14 @@ public class UserController {
     }
 
     @PostMapping("/new")
-    public String createUser(@ModelAttribute User user) {
-        userRepo.save(user);
+    public String save(@ModelAttribute User user) {
+        userService.createUser(user);
         return "redirect:/users";
     }
+
     @GetMapping("/{userId}")
-    public String getUserById (@PathVariable(name = "userId") String id, Model model) {
-        Optional<User> user = userRepo.findById(Long.valueOf(id));
-        model.addAttribute("user", user);
+    public String getUserById(@PathVariable(name = "userId") String id, Model model) {
+        model.addAttribute("user", userService.findUserById(id));
         return "user";
     }
 }

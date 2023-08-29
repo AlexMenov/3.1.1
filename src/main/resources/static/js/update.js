@@ -15,7 +15,9 @@ export function updateUserData(e) {
             }
             case "Save": {
                 const data = {
-                    id: parent.dataset.userId, photo: parent.querySelector(".user-photo img").dataset.source
+                    id: parent.dataset.userId,
+                    photo: parent.querySelector(".user-photo img").dataset.source,
+                    achievement: parent.querySelector("input[name='achievement']").value
                 };
                 console.log(parent.querySelector(".user-photo"));
                 editItems.forEach(item => {

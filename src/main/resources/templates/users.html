@@ -48,6 +48,7 @@
             <img th:src="@{'/images/' + ${user.getPhoto()}}" th:alt="${user.getLastName()}" width="100"
                  th:data-source="${user.getPhoto()}"/>
         </span>
+        <input type="hidden" name="achievement" th:value="${user.getAchievement()}">
         <button type="button" class="btn btn-success edit-user">Edit</button>
         <a th:href="${'/users/' + user.getId()}"><button type="button" class="btn btn-danger info-user">Info</button></a>
         <button type="button" class="btn btn-warning delete">Remove</button>
